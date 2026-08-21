@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int partition(vector<int> arr, int low, int high)
+int partition(vector<int>& arr, int low, int high)
 {
     int pivot = arr[low];
     int i = low;
@@ -23,9 +23,11 @@ int partition(vector<int> arr, int low, int high)
         }
     }
     swap(arr[low], arr[j]);
+
+    return j;
 }
 
-void qs(vector<int> arr, int low, int high)
+void qs(vector<int>& arr, int low, int high)
 {
     if (low < high)
     {
@@ -39,4 +41,20 @@ vector<int> quick_sort(vector<int> arr)
 {
     qs(arr, 0, arr.size() - 1);
     return arr;
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+    vector<int> arr(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+    arr = quick_sort(arr);
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
 }
